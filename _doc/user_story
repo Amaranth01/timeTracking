@@ -1,0 +1,23 @@
+------------------------------------------
+*** Ce que l'appli doit savoir faire ***
+-------------------------------------------
+La valeur du chrono soit être sauvegardée
+
+La dernière utilisation du projet doit être affichée
+
+Une date de tâche effectuée doit pouvoir être mise en place
+
+------------------------------------
+*** Les actions de l'utilisateur ***
+------------------------------------
+L'utilisateur doit savoir ajouter une tâche
+
+L'utilisateur doit pouvoir ajouter de nouveaux projets
+
+L'utilisateur ne doit lancer qu'un seul chrono
+
+L'utilisateur doit pouvoir un projet
+
+La valeur du chrono doit pouvoir être changée en cas d'oubli de lancement
+
+L'utilisateur doit pouvoir éditer et supprimer une tâche

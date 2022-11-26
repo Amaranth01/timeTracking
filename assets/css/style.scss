@@ -1,0 +1,28 @@
+$text-color: darkred;
+$buttonColor: #bebbbb;
+
+#content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 250px;
+  border: 3px double grey;
+}
+
+button {
+  color: $text-color;
+  background-color: $buttonColor;
+}
+
+#saw {
+  border: darkred solid 1px;
+  width: 215px;
+  height: 50px;
+  margin-top: 1rem;
+  background-color: #2f2f2f;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
