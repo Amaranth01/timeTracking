@@ -10,12 +10,17 @@
 <body>
 
     <div id="content">
-        <a href="taskPage.html">
+
             <h1 id="titleProject"></h1>
             <div id="project">
 
                 <div id="utils">
-                    <div id="timeElapsed"></div>
+                    <div id="timeElapsed">
+                        <div id="chrono">00:00:00</div>
+                        <p>
+                            <button id="timeSpent"><i class="fa-solid fa-stopwatch"></i></button>
+                        </p>
+                    </div>
                     <div id="calendar"></div>
                 </div>
 
@@ -25,18 +30,21 @@
 
                 <div id="other">
                     <p id="deleteProject"><i class="fa-solid fa-trash"></i></p>
-                    <p id="seeTasks"><i class="fa-solid fa-eye"></i></p>
+                    <a href="taskPage.html">
+                        <p id="seeTasks"><i class="fa-solid fa-eye"></i></p>
+                    </a>
 
                     <div>
-                        <p id="addTask"><i class="fa-solid fa-plus"></i>Ajouter une tâche</p>
+                        <button id="addTask"><i class="fa-solid fa-plus"></i>Ajouter une tâche</button>
                     </div>
 
                 </div>
 
             </div>
-        </a>
+
     </div>
 
-<script src="/build/js/front-bundle.js"></script>
+    <script src="https://kit.fontawesome.com/f33464c73a.js" crossorigin="anonymous"></script>
+    <script src="/build/js/front-bundle.js"></script>
 </body>
 </html>

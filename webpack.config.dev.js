@@ -31,6 +31,9 @@ const development = {
             }
         ]
     },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
 }
 
 module.exports = development;
