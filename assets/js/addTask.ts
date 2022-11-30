@@ -1,5 +1,7 @@
 import {listTask} from "./createProject";
 
+export let chrono : HTMLElement = document.createElement('i');
+
 export const AddTask : any = function (this : any) {
     let validateNewTask : HTMLButtonElement = document.createElement('button');
     let inputNewTask : HTMLInputElement = document.createElement('input');
@@ -11,7 +13,6 @@ export const AddTask : any = function (this : any) {
 
         validateNewTask.addEventListener('click', function () {
 
-            let chrono : HTMLElement = document.createElement('i');
             chrono.className = "fa-solid fa-stopwatch";
             let taskName : string = inputNewTask.value;
             inputNewTask.remove();
