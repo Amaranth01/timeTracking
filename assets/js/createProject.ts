@@ -1,6 +1,8 @@
+import {AddTask} from "./addTask";
+
 let addProject : HTMLButtonElement = document.querySelector('#addProject') as HTMLButtonElement;
 let body : HTMLElement = document.querySelector('body') as HTMLElement;
-let listTask : HTMLDivElement = document.createElement('div') as HTMLDivElement;
+export let listTask : HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
 export const CreateProject : any = function (this : any) {
     this.newProject = () => {
@@ -17,7 +19,7 @@ export const CreateProject : any = function (this : any) {
             let deleteProject : HTMLElement = document.createElement('i');
             let otherUtils :HTMLDivElement = document.createElement('div');
             let seeProject : HTMLElement = document.createElement('i');
-            let buttonAddTask : HTMLButtonElement = document.createElement('button')
+            let buttonAddTask : HTMLButtonElement = document.createElement('button');
             let add : HTMLElement = document.createElement('i');
 
             content.className = "content";
@@ -59,6 +61,10 @@ export const CreateProject : any = function (this : any) {
                 title.innerHTML = titleProject.toString();
                 inputTitle.remove();
                 validateProjectName.remove();
+            });
+            buttonAddTask.addEventListener('click', () => {
+                let addTask = new AddTask();
+                addTask.newTask();
             });
         });
     }
