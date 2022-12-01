@@ -4,14 +4,13 @@ export const TitleProject : any = function (this : any) {
     validateProjectName.innerText = "Valider le nom du projet";
     this.projectName = () => {
         validateProjectName.addEventListener('click', function () {
-            let titleProject : string = inputTitle.value;
-            title.innerHTML = titleProject.toString();
+            let projectTitle : string = inputTitle.value;
+            title.innerHTML = projectTitle.toString();
             inputTitle.remove();
             validateProjectName.remove();
-            window.localStorage.setItem("TitleProject", JSON.stringify(titleProject.toString()));
-            console.log(JSON.stringify(titleProject.toString()));
+
+            window.localStorage.setItem("keyTitleProject", JSON.stringify(projectTitle.toString()));
+            console.log(JSON.stringify(projectTitle.toString()));
         });
     }
 }
-
-
