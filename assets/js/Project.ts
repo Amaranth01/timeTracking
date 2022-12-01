@@ -21,6 +21,7 @@ export const CreateProject : any = function (this : any) {
             let otherUtils :HTMLDivElement = document.createElement('div');
             let seeProject : HTMLElement = document.createElement('i');
             let buttonAddTask : HTMLButtonElement = document.createElement('button');
+            let link : HTMLAnchorElement = document.createElement('a');
 
             content.className = "content";
             title.className= "title";
@@ -51,8 +52,11 @@ export const CreateProject : any = function (this : any) {
             utils.appendChild(time);
             utils.appendChild(seeTime);
             otherUtils.appendChild(deleteProject);
-            otherUtils.appendChild(seeProject);
+            otherUtils.appendChild(link);
             otherUtils.appendChild(buttonAddTask);
+            link.appendChild(seeProject);
+
+            link.href = "taskPage.html";
 
             validateProjectName.innerText = "Valider le nom du projet";
 

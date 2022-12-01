@@ -1,5 +1,5 @@
 import {chrono} from "./addTask";
-import {listTask, seeTime} from "./createProject";
+import {seeTime} from "./Project";
 
 export const StopWatch: any = function (this: any) {
     let hours: number = 0;

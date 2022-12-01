@@ -1,4 +1,4 @@
-import {listTask} from "./createProject";
+import {listTask} from "./Project";
 
 export let chrono : HTMLElement = document.createElement('i');
 
