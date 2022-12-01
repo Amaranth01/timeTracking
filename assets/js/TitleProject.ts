@@ -8,6 +8,10 @@ export const TitleProject : any = function (this : any) {
             title.innerHTML = titleProject.toString();
             inputTitle.remove();
             validateProjectName.remove();
+            window.localStorage.setItem("TitleProject", JSON.stringify(titleProject.toString()));
+            console.log(JSON.stringify(titleProject.toString()));
         });
     }
 }
+
+

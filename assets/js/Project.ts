@@ -11,12 +11,11 @@ export let inputTitle: HTMLInputElement = document.createElement('input') as HTM
 export let title: HTMLElement = document.createElement('h1') as HTMLElement;
 export let buttonAddTask: HTMLButtonElement = document.createElement('button');
 export let otherUtils: HTMLDivElement = document.createElement('div');
-export let content: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
 export const CreateProject: any = function (this: any) {
     this.newProject = () => {
         addProject.addEventListener('click', function () {
-
+            let content: HTMLDivElement = document.createElement('div') as HTMLDivElement;
             let utils: HTMLDivElement = document.createElement('div') as HTMLDivElement;
             let time: HTMLElement = document.createElement('i');
             let calendar: HTMLElement = document.createElement('i');
@@ -58,13 +57,16 @@ export const CreateProject: any = function (this: any) {
             otherUtils.appendChild(buttonAddTask);
             link.appendChild(seeProject);
 
+
             link.href = "taskPage.html";
 
             let titleProject = new TitleProject();
             titleProject.projectName();
 
-            let addTask = new AddTask();
-            addTask.newTask();
+            buttonAddTask.addEventListener('click', function () {
+                let addTask = new AddTask();
+                addTask.newTask();
+            });
 
             let startChrono = new StopWatch;
             startChrono.countUp();
