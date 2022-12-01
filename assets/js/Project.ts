@@ -3,26 +3,25 @@ import {StopWatch} from "./StopWatch";
 import {TitleProject} from "./TitleProject";
 
 let addProject: HTMLButtonElement = document.querySelector('#addProject') as HTMLButtonElement;
-let body: HTMLElement = document.querySelector('body') as HTMLElement;
+export let body: HTMLElement = document.querySelector('body') as HTMLElement;
 export let listTask: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 export let seeTime: HTMLParagraphElement = document.createElement('p');
 export let validateProjectName: HTMLButtonElement = document.createElement('button');
 export let inputTitle: HTMLInputElement = document.createElement('input') as HTMLInputElement;
 export let title: HTMLElement = document.createElement('h1') as HTMLElement;
 export let buttonAddTask: HTMLButtonElement = document.createElement('button');
+export let otherUtils: HTMLDivElement = document.createElement('div');
+export let content: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
 export const CreateProject: any = function (this: any) {
     this.newProject = () => {
         addProject.addEventListener('click', function () {
-            let content: HTMLDivElement = document.createElement('div') as HTMLDivElement;
-
 
             let utils: HTMLDivElement = document.createElement('div') as HTMLDivElement;
             let time: HTMLElement = document.createElement('i');
             let calendar: HTMLElement = document.createElement('i');
             let pCalendar: HTMLParagraphElement = document.createElement('p');
             let deleteProject: HTMLElement = document.createElement('i');
-            let otherUtils: HTMLDivElement = document.createElement('div');
             let seeProject: HTMLElement = document.createElement('i');
             let link: HTMLAnchorElement = document.createElement('a');
 
