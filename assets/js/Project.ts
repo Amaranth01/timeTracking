@@ -1,30 +1,33 @@
 import {AddTask} from "./addTask";
 import {StopWatch} from "./StopWatch";
+import {TitleProject} from "./TitleProject";
 
-let addProject : HTMLButtonElement = document.querySelector('#addProject') as HTMLButtonElement;
-let body : HTMLElement = document.querySelector('body') as HTMLElement;
-export let listTask : HTMLDivElement = document.createElement('div') as HTMLDivElement;
-export let seeTime : HTMLParagraphElement = document.createElement('p');
+let addProject: HTMLButtonElement = document.querySelector('#addProject') as HTMLButtonElement;
+let body: HTMLElement = document.querySelector('body') as HTMLElement;
+export let listTask: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+export let seeTime: HTMLParagraphElement = document.createElement('p');
+export let validateProjectName: HTMLButtonElement = document.createElement('button');
+export let inputTitle: HTMLInputElement = document.createElement('input') as HTMLInputElement;
+export let title: HTMLElement = document.createElement('h1') as HTMLElement;
+export let buttonAddTask: HTMLButtonElement = document.createElement('button');
 
-export const CreateProject : any = function (this : any) {
+export const CreateProject: any = function (this: any) {
     this.newProject = () => {
         addProject.addEventListener('click', function () {
-            let content : HTMLDivElement = document.createElement('div') as HTMLDivElement;
-            let title : HTMLElement = document.createElement('h1') as HTMLElement;
-            let validateProjectName : HTMLButtonElement = document.createElement('button');
-            let inputTitle : HTMLInputElement = document.createElement('input') as HTMLInputElement;
-            let utils : HTMLDivElement = document.createElement('div') as HTMLDivElement;
-            let time : HTMLElement = document.createElement('i');
-            let calendar : HTMLElement = document.createElement('i');
-            let pCalendar : HTMLParagraphElement = document.createElement('p');
-            let deleteProject : HTMLElement = document.createElement('i');
-            let otherUtils :HTMLDivElement = document.createElement('div');
-            let seeProject : HTMLElement = document.createElement('i');
-            let buttonAddTask : HTMLButtonElement = document.createElement('button');
-            let link : HTMLAnchorElement = document.createElement('a');
+            let content: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+
+
+            let utils: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+            let time: HTMLElement = document.createElement('i');
+            let calendar: HTMLElement = document.createElement('i');
+            let pCalendar: HTMLParagraphElement = document.createElement('p');
+            let deleteProject: HTMLElement = document.createElement('i');
+            let otherUtils: HTMLDivElement = document.createElement('div');
+            let seeProject: HTMLElement = document.createElement('i');
+            let link: HTMLAnchorElement = document.createElement('a');
 
             content.className = "content";
-            title.className= "title";
+            title.className = "title";
             inputTitle.className = 'inputTitle';
             validateProjectName.className = "validateProject";
             time.className = "fa-regular fa-clock";
@@ -58,20 +61,14 @@ export const CreateProject : any = function (this : any) {
 
             link.href = "taskPage.html";
 
-            validateProjectName.innerText = "Valider le nom du projet";
+            let titleProject = new TitleProject();
+            titleProject.projectName();
 
-            validateProjectName.addEventListener('click', function () {
-                let titleProject : string = inputTitle.value;
-                title.innerHTML = titleProject.toString();
-                inputTitle.remove();
-                validateProjectName.remove();
-            });
-            buttonAddTask.addEventListener('click', () => {
-                let addTask = new AddTask();
-                addTask.newTask();
-            });
-                let startChrono = new StopWatch;
-                startChrono.countUp();
+            let addTask = new AddTask();
+            addTask.newTask();
+
+            let startChrono = new StopWatch;
+            startChrono.countUp();
         });
     }
 }

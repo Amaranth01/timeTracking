@@ -1,4 +1,4 @@
-import {listTask} from "./Project";
+import {buttonAddTask, listTask} from "./Project";
 
 export let chrono : HTMLElement = document.createElement('i');
 
@@ -7,10 +7,11 @@ export const AddTask : any = function (this : any) {
     let inputNewTask : HTMLInputElement = document.createElement('input');
 
     this.newTask = () => {
-        listTask.appendChild(inputNewTask);
-        listTask.appendChild(validateNewTask);
-        validateNewTask.innerText = "Valider la nouvelle tâche";
-
+        buttonAddTask.addEventListener('click', function () {
+            listTask.appendChild(inputNewTask);
+            listTask.appendChild(validateNewTask);
+            validateNewTask.innerText = "Valider la nouvelle tâche";
+        });
         validateNewTask.addEventListener('click', function () {
 
             chrono.className = "fa-solid fa-stopwatch";

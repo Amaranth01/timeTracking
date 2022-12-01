@@ -10,8 +10,8 @@ export const StopWatch: any = function (this: any) {
 
     chrono.addEventListener('click', function (this: any) {
         if (stop) {
-            console.log("chrono O?N")
             stop = false;
+            chrono.style.color = "darkgreen";
             testTime = setInterval(this.countUp = () => {
                 seconds = parseInt(String(seconds));
                 minutes = parseInt(String(minutes));
@@ -33,7 +33,6 @@ export const StopWatch: any = function (this: any) {
         }
         else {
             stop = true;
-            console.log("chrono OFF");
             clearInterval(testTime);
             chrono.style.color = "darkred";
         }
