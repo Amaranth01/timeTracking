@@ -35,7 +35,6 @@ export const CreateProject: any = function (this: any) {
                 otherUtils.className = "otherUtils";
                 deleteProject.className = "fa-solid fa-trash";
                 seeProject.className = "fa-solid fa-eye";
-
                 buttonAddTask.innerText = " + Ajouter une tâche ";
                 seeTime.innerHTML = "00:00:00";
                 validateProjectName.innerText = "Valider le nom du projet";
