@@ -13,11 +13,14 @@ export const  ContentProject : any = function (this : any) {
 
         contentTask.appendChild(title);
         contentTask.appendChild(allTask);
+        contentTask.appendChild(listTask);
         contentTask.appendChild(otherUtils2);
         otherUtils2.appendChild(buttonAddTask);
+
         title.className = "title";
         editTask.className = "fa-solid fa-pen-to-square";
         deleteTask.className = "fa-solid fa-trash";
+        listTask.className = "listTask";
 
         let getTitle : string |  null = localStorage.getItem("keyTitleProject");
         let getTask : string | null = localStorage.getItem('listTaskProject');
@@ -29,11 +32,11 @@ export const  ContentProject : any = function (this : any) {
         if(getTask) {
             for(let i = 0; i < getTask.length; i++) {
                 allTask.innerHTML = JSON.parse(getTask);
+                listTask.appendChild(allTask);
                 allTask.appendChild(editTask);
                 allTask.appendChild(deleteTask);
             }
         }
-
         buttonAddTask.innerText = " + Ajouter une tâche ";
         let addTask = new AddTask(listTask);
         addTask.newTask();
