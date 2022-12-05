@@ -5,6 +5,8 @@ import {TitleProject} from "./TitleProject";
 let addProject: HTMLButtonElement = document.querySelector('#addProject') as HTMLButtonElement;
 export let body: HTMLElement = document.querySelector('body') as HTMLElement;
 const arrayProject : string[] = [];
+export let taskArray : string[] = [];
+export let taskStorage : Storage = localStorage;
 
 export const CreateProject: any = function (this: any) {
     this.newProject = () => {

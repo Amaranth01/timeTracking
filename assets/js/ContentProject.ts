@@ -1,4 +1,4 @@
-import {AddTask} from "./addTask";
+import {AddTask, chrono} from "./addTask";
 
 export const  ContentProject : any = function (this : any) {
     this.projectContent = () => {
@@ -21,6 +21,7 @@ export const  ContentProject : any = function (this : any) {
         editTask.className = "fa-solid fa-pen-to-square";
         deleteTask.className = "fa-solid fa-trash";
         listTask.className = "listTask";
+        chrono.className = "fa-solid fa-stopwatch";
 
         let getTitle : string |  null = localStorage.getItem("keyTitleProject");
         let getTask : string | null = localStorage.getItem('listTaskProject');
@@ -30,10 +31,12 @@ export const  ContentProject : any = function (this : any) {
         }
 
         if(getTask) {
-            for(let i = 0; i < getTask.length; i++) {
-                allTask.innerHTML = JSON.parse(getTask);
+            let taskArray = JSON.parse(getTask);
+            for(let i = 0; i < taskArray.length; i++) {
+                allTask.innerHTML += taskArray[i];
                 listTask.appendChild(allTask);
                 allTask.appendChild(editTask);
+                allTask.appendChild(chrono)
                 allTask.appendChild(deleteTask);
             }
         }
