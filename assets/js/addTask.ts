@@ -6,7 +6,6 @@ export const AddTask : any = function (this : any, listTask: HTMLDivElement) {
     let validateNewTask : HTMLButtonElement = document.createElement('button');
     let inputNewTask : HTMLInputElement = document.createElement('input');
 
-
     this.newTask = () => {
         listTask.appendChild(inputNewTask);
         listTask.appendChild(validateNewTask);

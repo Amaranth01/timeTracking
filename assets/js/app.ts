@@ -7,5 +7,3 @@ createProject.newProject();
 
 let contentProject : any = new ContentProject();
 contentProject.projectContent();
-
-localStorage.getItem("keepProject");

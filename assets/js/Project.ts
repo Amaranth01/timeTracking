@@ -19,7 +19,7 @@ export const CreateProject: any = function (this: any) {
                 let utils: HTMLDivElement = document.createElement('div') as HTMLDivElement;
                 let time: HTMLElement = document.createElement('i');
                 let calendar: HTMLElement = document.createElement('i');
-                let deleteProject: HTMLElement = document.createElement('i');
+                let supress: HTMLElement = document.createElement('i');
                 let seeProject: HTMLElement = document.createElement('i');
                 let link: HTMLAnchorElement = document.createElement('a');
                 let inputTitle: HTMLInputElement = document.createElement('input') as HTMLInputElement;
@@ -35,7 +35,7 @@ export const CreateProject: any = function (this: any) {
                 calendar.className = "fa-solid fa-calendar-days";
                 listTask.className = "listTask";
                 otherUtils.className = "otherUtils";
-                deleteProject.className = "fa-solid fa-trash";
+                supress.className = "fa-solid fa-trash";
                 seeProject.className = "fa-solid fa-eye";
                 buttonAddTask.innerText = " + Ajouter une tâche ";
                 seeTime.innerHTML = "00:00:00";
@@ -51,12 +51,12 @@ export const CreateProject: any = function (this: any) {
                 utils.appendChild(calendar);
                 utils.appendChild(time);
                 utils.appendChild(seeTime);
-                otherUtils.appendChild(deleteProject);
+                otherUtils.appendChild(supress);
                 otherUtils.appendChild(link);
                 otherUtils.appendChild(buttonAddTask);
                 link.appendChild(seeProject);
 
-                link.href = "taskPage.html";
+                link.href = "/index.php?c=home&a=content";
 
                 let titleProject = new TitleProject(title, inputTitle, validateProjectName);
                 titleProject.projectName();
@@ -69,8 +69,8 @@ export const CreateProject: any = function (this: any) {
                 let startChrono = new StopWatch(seeTime);
                 startChrono.countUp;
 
-                arrayProject.push(CreateProject);
-                window.localStorage.setItem("keepProject", JSON.stringify(arrayProject));
+                arrayProject.push(CreateProject.newProject);
+                taskStorage.setItem("keepProject", JSON.stringify(arrayProject));
              });
         }
     }

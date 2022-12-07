@@ -6,6 +6,7 @@
           content="width=device-width, initial-scale=1.0">
     <title>Time tracking</title>
 
+
 </head>
 <body>
 
@@ -13,7 +14,6 @@
         <button id="addProject">Créer un projet</button>
     </div>
 
-    <script src="https://kit.fontawesome.com/f33464c73a.js" crossorigin="anonymous"></script>
-    <script src="/build/js/front-bundle.js"></script>
+
 </body>
 </html>

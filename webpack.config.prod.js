@@ -38,6 +38,9 @@ const production = {
             }
         ]
     },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
 
     optimization: {
         minimize: true,
