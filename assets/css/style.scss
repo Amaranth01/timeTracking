@@ -33,3 +33,19 @@
 .fa-trash {
   color: #6675c6;
 }
+
+.message {
+  position: absolute;
+  width: 15vw;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: white;
+}
+
+.success {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+}

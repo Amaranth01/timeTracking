@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>Time tracking</title>
+<?php
+//Ajouter sécurité vérification user connexion si connecté OK pour cliquer
+?>
 
-
-</head>
-<body>
+<h2>Bienvenue sur votre espace de Time Tracking</h2>
 
     <div>
         <button id="addProject">Créer un projet</button>
     </div>
-
-
-</body>
-</html>

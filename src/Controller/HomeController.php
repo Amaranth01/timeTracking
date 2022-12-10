@@ -7,7 +7,4 @@ class HomeController extends AbstractController
         $this->render("project/project");
     }
 
-    public function content() {
-        $this->render("project/taskPage");
-    }
 }
