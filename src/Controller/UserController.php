@@ -25,17 +25,19 @@ class UserController extends AbstractController
     public function login()
     {
         if ($this->formSubmitted()) {
+
             $username = $this->clean($this->getFormField('username'));
             $password = $this->getFormField('password');
 
-            $user = R::findOne('user', 'username=?', [$username]);
+            $user = R::findOne('user', 'user_name=?', [$username]);
+
             if ($user !== null) {
                 password_verify($password, $user->password);
             } else {
-                $_SESSION['errors'] = "Les mots de passe ne correspondent pas";
+                $_SESSION['errors'] = "Le mot de passe n'est pas correct";
                 self::loginPage();
             }
-            $this->render('home/project');
+            $this->render('project/project');
         }
         $this->render("project/project");
     }
