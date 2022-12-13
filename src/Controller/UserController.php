@@ -8,11 +8,13 @@ use RedBeanPHP\RedException\SQL;
 class UserController extends AbstractController
 {
 
-    public function loginPage() {
+    public function loginPage()
+    {
         $this->render('forms/login');
     }
 
-    public function registerPage() {
+    public function registerPage()
+    {
         $this->render('forms/register');
     }
 
@@ -22,21 +24,20 @@ class UserController extends AbstractController
      */
     public function login()
     {
-        if($this->formSubmitted()) {
-            $username =$this->clean($this->getFormField('username'));
+        if ($this->formSubmitted()) {
+            $username = $this->clean($this->getFormField('username'));
             $password = $this->getFormField('password');
 
             $user = R::findOne('user', 'username=?', [$username]);
-            if($user !== null) {
+            if ($user !== null) {
                 password_verify($password, $user->password);
-            }
-            else {
+            } else {
                 $_SESSION['errors'] = "Les mots de passe ne correspondent pas";
                 self::loginPage();
             }
             $this->render('home/project');
         }
-            self::registerPage();
+        $this->render("project/project");
     }
 
     /**
@@ -58,28 +59,20 @@ class UserController extends AbstractController
         }
 
         if ($this->formSubmitted()) {
-            $user = R::dispense('user');
-            $user->password = $this->getFormField('password');
-            $user->username = $this->clean($this->getFormField('username'));
-            $user->role = "user";
-
-
             // Returns an error if the password does not contain all the requested characters.
-            if (!preg_match('/^(?=.*[!@#$%^&*-\])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/', $user->password)) {
+            if (!preg_match('/^(?=.*[!@#$%^&*-\])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/', $this->getFormField('password'))) {
                 $_SESSION['errors'] = "Le mot de passe doit contenir une majuscule, un chiffre et un caractère spécial";
                 self::registerPage();
             }
-
-            // Passwords match
-            if ($user->password === $this->getFormField('passwordR')) {
-                $user->password = password_hash($user->password, PASSWORD_DEFAULT);
-                try {
-                    R::store($user);
-                } catch (SQl $e){
-                    echo "Une erreur est survenue lors de l'enregistrement en base de données";
-                }
-                var_dump($user);
-                die();
+            // Passwords match register data in DB
+            if ($this->getFormField('password') === $this->getFormField('passwordR')) {
+                //create table in DB
+                $user = R::dispense('user');
+                $user->userPassword = password_hash($this->getFormField('password'), PASSWORD_DEFAULT);
+                $user->userName = $this->clean($this->getFormField('username'));
+                $user->userRole = "user";
+                //insert data in DB
+                $insert = R::store($user);
 
                 $successMessage = "Votre inscription a été validée";
                 $_SESSION['success'] = $successMessage;

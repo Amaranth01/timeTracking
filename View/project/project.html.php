@@ -4,6 +4,6 @@
 
 <h2>Bienvenue sur votre espace de Time Tracking</h2>
 
-    <div>
-        <button id="addProject">Créer un projet</button>
-    </div>
+    <form action=""  method="post">
+        <input type="submit" name="submit" id="addProject" value = "Créer un projet">
+    </form>
