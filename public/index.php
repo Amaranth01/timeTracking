@@ -13,3 +13,4 @@ R::setup('mysql:host=localhost;dbname=time_tracking', 'root', '');
 Debug::enable();
 Routing::route();
 session_start();
+
