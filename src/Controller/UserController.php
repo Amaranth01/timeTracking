@@ -33,6 +33,7 @@ class UserController extends AbstractController
 
             if ($user !== null) {
                 password_verify($password, $user->password);
+                $_SESSION['user'] = $user;
             } else {
                 $_SESSION['errors'] = "Le mot de passe n'est pas correct";
                 self::loginPage();
@@ -75,6 +76,7 @@ class UserController extends AbstractController
                 $user->userRole = "user";
                 //insert data in DB
                 $insert = R::store($user);
+
 
                 $successMessage = "Votre inscription a été validée";
                 $_SESSION['success'] = $successMessage;
