@@ -7,7 +7,27 @@ export const TitleProject : any = function (this : any, title : HTMLHeadingEleme
             inputTitle.remove();
             validateProjectName.remove();
 
-            window.localStorage.setItem("keyTitleProject", JSON.stringify(projectTitle.toString()));
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/index.php?c=project&a=add-title');
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.responseType = "json";
+
+            xhr.onload = function () {
+
+                if(xhr.status === 404) {
+                    alert("une erreur s'est produite");
+                }else if (xhr.status === 400) {
+                    alert('Un paramètre est manquant');
+                }
+                let response = xhr.response;
+                projectTitle = response.projectTitle;
+            }
+
+            xhr.send(JSON.stringify({
+                projectTitle: projectTitle
+                //Possibilité de marque juste "projectTitle dans ce cas.
+                //Là, il est instancié comme un objet
+            }));
         });
     }
 }

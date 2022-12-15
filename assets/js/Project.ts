@@ -75,15 +75,6 @@ export const CreateProject: any = function (this: any) {
 
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/index.php?c=project&a=add-project');
-
-                xhr.onload = function () {
-                    if (xhr.status === 404) {
-                        alert("une erreur s'est produite");
-                    } else if (xhr.status === 400) {
-                        alert('Un paramètre est manquant');
-                    }
-                }
-                xhr.send();
             });
         }
     }

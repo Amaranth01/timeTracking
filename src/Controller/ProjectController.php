@@ -11,21 +11,24 @@ class ProjectController extends AbstractController
         $this->render("forms/login");
     }
 
-    public function addProject()
-    {
+    public function addTitle() {
+
+        $json = file_get_contents('php://input');
+        $payload = json_decode($json, true);
+        $content = $payload['projectTitle'];
+
         $user = R::findOne('user', 'id', [$_SESSION['user']->id]);
         $project = R::dispense('project');
-        $project->projectTitle = "titre temporaire";
+        $project->project_title = "titre temporaire";
         $project->projectDate = R::isoDateTime();
         $user->ownProjectList[] = $project;
 
         R::store($project);
         R::store($user);
 
-        echo json_encode([
-            'message' => "c'est tout good"
-        ]);
+        $project->project_title = $content;
+        R::store($project);
 
-        exit;
+        exit();
     }
 }
