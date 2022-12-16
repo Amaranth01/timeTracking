@@ -11,11 +11,17 @@ export const  ContentProject : any = function (this : any) {
         let editTask : HTMLElement = document.createElement('i');
         let deleteTask : HTMLElement = document.createElement('i');
 
-        contentTask.appendChild(title);
-        contentTask.appendChild(allTask);
-        contentTask.appendChild(listTask);
-        contentTask.appendChild(otherUtils2);
-        otherUtils2.appendChild(buttonAddTask);
+        if(contentTask) {
+            contentTask.appendChild(title);
+            contentTask.appendChild(allTask);
+            contentTask.appendChild(listTask);
+            contentTask.appendChild(otherUtils2);
+        }
+
+        if (otherUtils2) {
+            otherUtils2.appendChild(buttonAddTask);
+        }
+
 
         title.className = "title";
         editTask.className = "fa-solid fa-pen-to-square";
