@@ -4,13 +4,13 @@ export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement
     let hours: number = 0;
     let minutes: number = 0;
     let seconds: number = 0;
-    let testTime: NodeJS.Timer;
+    let timePast: NodeJS.Timer;
     let stop: boolean = true;
         chrono.addEventListener('click', function (this: any) {
             if (stop) {
                 stop = false;
                 chrono.style.color = "darkgreen";
-                testTime = setInterval(this.countUp = () => {
+                timePast = setInterval(this.countUp = () => {
                     seconds = parseInt(String(seconds));
                     minutes = parseInt(String(minutes));
                     hours = parseInt(String(hours));
@@ -31,7 +31,25 @@ export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement
             }
             else {
                 stop = true;
-                clearInterval(testTime);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/index.php?c=task&a=add-time');
+                xhr.responseType = 'json';
+
+                xhr.onload = function () {
+
+                    if(xhr.status === 404) {
+                        alert("une erreur s'est produite");
+                    }else if (xhr.status === 400) {
+                        alert('Un paramètre est manquant');
+                    }
+                    let response = xhr.response;
+                    timePast = response.timePast;
+                }
+
+                xhr.send(JSON.stringify({
+                    timePast: timePast
+                }));
+                clearInterval(timePast);
                 chrono.style.color = "darkred";
             }
         });
