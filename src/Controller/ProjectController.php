@@ -17,15 +17,21 @@ class ProjectController extends AbstractController
         $payload = json_decode($json, true);
         $content = $payload['projectTitle'];
 
-        $user = R::findOne('user', 'id', [$_SESSION['user']->id]);
+        $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
         $project = R::dispense('project');
         $project->projectDate = R::isoDateTime();
-
+        $_SESSION['project'] = $project;
         $user->ownProjectList[] = $project;
-        $project->projectTitle = $content;
+        $project->projectTitle = $this->clean($content);
         R::store($project);
         R::store($user);
 
         exit();
+    }
+
+    public function deleteProject(int $id = null) {
+        $project = R::findOne('project', 'id=?', [$id]);
+        $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
+        R::trash($project);
     }
 }
