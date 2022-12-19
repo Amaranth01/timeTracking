@@ -1,4 +1,4 @@
-import {AddTask, chrono} from "./addTask";
+import {AddTask} from "./addTask";
 
 export const  ContentProject : any = function (this : any) {
     this.projectContent = () => {
@@ -10,6 +10,7 @@ export const  ContentProject : any = function (this : any) {
         let buttonAddTask: HTMLButtonElement = document.createElement('button');
         let editTask : HTMLElement = document.createElement('i');
         let deleteTask : HTMLElement = document.createElement('i');
+        let chrono : HTMLElement = document.createElement('i');
 
         if(contentTask) {
             contentTask.appendChild(title);
@@ -47,7 +48,7 @@ export const  ContentProject : any = function (this : any) {
             }
         }
         buttonAddTask.innerText = " + Ajouter une tâche ";
-        let addTask = new AddTask(listTask);
+        let addTask = new AddTask(listTask, chrono);
         addTask.newTask();
     }
 }

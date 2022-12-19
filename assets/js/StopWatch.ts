@@ -1,6 +1,5 @@
-import {chrono} from "./addTask";
 
-export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement) {
+export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement, chrono : HTMLElement) {
     let hours: number = 0;
     let minutes: number = 0;
     let seconds: number = 0;
@@ -47,7 +46,7 @@ export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement
                 }
 
                 xhr.send(JSON.stringify({
-                    seconds: seconds
+                    seconds: seconds,
                 }));
                 clearInterval(timePast);
                 chrono.style.color = "darkred";

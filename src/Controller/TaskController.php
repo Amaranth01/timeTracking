@@ -27,7 +27,6 @@ class TaskController extends AbstractController
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
         $content = $payload['seconds'];
-
         $time = R::load('task', $_SESSION['task']);
         $time->taskTime = $content;
         R::store($time);

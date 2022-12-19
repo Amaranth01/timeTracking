@@ -1,8 +1,6 @@
-import {taskArray, taskStorage} from "./Project";
+import {taskArray} from "./Project";
 
-export let chrono : HTMLElement = document.createElement('i');
-
-export const AddTask : any = function (this : any, listTask: HTMLDivElement) {
+export const AddTask : any = function (this : any, listTask: HTMLDivElement, chrono: HTMLElement) {
     let validateNewTask : HTMLButtonElement = document.createElement('button');
     let inputNewTask : HTMLInputElement = document.createElement('input');
 
@@ -13,7 +11,7 @@ export const AddTask : any = function (this : any, listTask: HTMLDivElement) {
 
         validateNewTask.addEventListener('click', function () {
             let taskName : string = inputNewTask.value;
-            chrono.className = "fa-solid fa-stopwatch";
+
             inputNewTask.remove();
             validateNewTask.remove();
             listTask.innerHTML += taskName.toString();

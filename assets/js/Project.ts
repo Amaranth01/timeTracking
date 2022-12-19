@@ -27,6 +27,7 @@ export const CreateProject: any = function (this: any) {
                 let validateProjectName: HTMLButtonElement = document.createElement('button');
                 let seeTime: HTMLParagraphElement = document.createElement('p');
                 let buttonAddTask: HTMLButtonElement = document.createElement('button');
+                let chrono : HTMLElement = document.createElement('i');
 
                 content.className = "content";
                 title.className = "title";
@@ -41,6 +42,7 @@ export const CreateProject: any = function (this: any) {
                 buttonAddTask.innerText = " + Ajouter une tâche ";
                 seeTime.innerHTML = "00:00:00";
                 validateProjectName.innerText = "Valider le nom du projet";
+                chrono.className = "fa-solid fa-stopwatch";
 
                 body.appendChild(content);
                 content.appendChild(inputTitle);
@@ -63,11 +65,11 @@ export const CreateProject: any = function (this: any) {
                 titleProject.projectName();
 
                 buttonAddTask.addEventListener('click', function () {
-                    let addTask = new AddTask(listTask);
+                    let addTask = new AddTask(listTask, chrono);
                     addTask.newTask();
                 });
 
-                let startChrono = new StopWatch(seeTime);
+                let startChrono = new StopWatch(seeTime, chrono);
                 startChrono.countUp;
 
                 arrayProject.push(CreateProject.newProject);
