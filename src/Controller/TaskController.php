@@ -6,7 +6,7 @@ use RedBeanPHP\R;
 
 class TaskController extends AbstractController
 {
-    public function addTask(int $id = null) {
+    public function addTask() {
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
         $content = $payload['taskName'];
@@ -15,7 +15,7 @@ class TaskController extends AbstractController
         $task = R::dispense('task');
         $task->taskTime = 0;
         $task->taskName = $this->clean($content);
-
+        $_SESSION['task']= $task;
         $project->ownTaskList[] = $task;
         R::store($task);
         R::store($project);
@@ -26,9 +26,9 @@ class TaskController extends AbstractController
     public function addTime(int $id = null) {
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
-        $content = $payload['timePast'];
+        $content = $payload['seconds'];
 
-        $time = R::load('task', (int)[$id]);
+        $time = R::load('task', $_SESSION['task']);
         $time->taskTime = $content;
         R::store($time);
     }

@@ -43,11 +43,11 @@ export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement
                         alert('Un paramètre est manquant');
                     }
                     let response = xhr.response;
-                    timePast = response.timePast;
+                    seconds = response.seconds;
                 }
 
                 xhr.send(JSON.stringify({
-                    timePast: timePast
+                    seconds: seconds
                 }));
                 clearInterval(timePast);
                 chrono.style.color = "darkred";
