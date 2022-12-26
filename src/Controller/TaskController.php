@@ -23,7 +23,7 @@ class TaskController extends AbstractController
         exit();
     }
 
-    public function addTime(int $id = null) {
+    public function addTime() {
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
         $content = $payload['seconds'];

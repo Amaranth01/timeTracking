@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use RedBeanPHP\R;
+
 class AbstractController
 {
-    public function render(string $template)
+    public function render(string $template, array $data = [])
     {
         ob_start();
         require __DIR__ . '/../../View/' . $template . '.html.php';
@@ -33,5 +35,10 @@ class AbstractController
             return (null === $default) ? '' : $default;
         }
         return $_POST[$field];
+    }
+
+    public function userConnected(): \RedBeanPHP\OODBBean
+    {
+        return R::findOne('user', 'id=?', [$_SESSION['user']->id]);
     }
 }
