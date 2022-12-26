@@ -19,7 +19,7 @@ class ProjectController extends AbstractController
 
         $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
         $project = R::dispense('project');
-        $project->projectDate = R::isoDateTime();
+        $project->projectDate = R::isoDate();
         $_SESSION['project'] = $project;
         $user->ownProjectList[] = $project;
         $project->projectTitle = $this->clean($content);

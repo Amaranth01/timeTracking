@@ -1,33 +1,68 @@
-.content, .contentTask {
-  background-color: #eaeaea;
-  border: #c0c0c0 5px solid;
+body {
+  width: 100%;
+  min-height: 96vh;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+button {
+  padding: 0.2rem;
+}
+
+h2 {
+  text-align: center;
+  width: 100%;
+}
+
+#main {
+  text-align: center;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 1rem;
-  width: 45rem;
-  height: 32rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+  width: 30rem;
+  height: 24rem;
+  padding: 0.8rem;
+  background-color: #eaeaea;
+  border: #c0c0c0 5px solid;
+  margin-bottom: 2rem;
+}
+
+.listTask {
+  background-color: #f4f4f4;
+  border: 1px black solid;
+  width: 58%;
+  height: 15rem;
+  margin-left: 4rem;
+  padding: 0.5rem;
+}
+
+.utils {
+  width: 23%;
+}
+
+.otherUtils > span > i  {
+  margin-right: 7rem;
 }
 
 .fa-clock, .fa-calendar-days, .fa-pen-to-square {
   color: #71ae98;
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
-.otherUtils {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
-
-.listTask, .allTask, {
-  background-color: #f4f4f4;
-  border: 1px black solid;
-  width: 35rem;
-  height: 25rem;
-  margin-bottom: 0.5rem;
+.chrono {
+  margin-left: 11rem;
 }
 
 .fa-trash {
