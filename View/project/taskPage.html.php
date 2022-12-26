@@ -1,19 +1,33 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-</head>
-<body>
+<?php
+    if (isset($data['project'])) {
+        $project = $data['project'];
+    }
+?>
 
+<h2>Détail de votre projet</h2>
 <div class="contentTask">
+    <div class="main">
+        <h2> <?= $project->projectTitle ?> </h2>
+    </div>
 
+    <div id="contentDetails">
+        <?php foreach ($project->ownTaskList as $task) { ?>
+            <p id="listTask">
+                <span>
+                    <?= $task->taskName ?>
+                </span>
+
+                <span id="manageTask">
+                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href=""><i class="fa-solid fa-trash suppress"></i></a>
+                </span>
+            </p>
+        <?php } ?>
+    </div>
+    <div>
+        <p>
+            <span><i class="fa-solid fa-stopwatch"></i> Total d'heures passées : <?= $task->task_time ?> </span>
+            <button class="buttonAddTask"> + Ajouter une tâche</button>
+        </p>
+    </div>
 </div>
-
-<script src="https://kit.fontawesome.com/f33464c73a.js" crossorigin="anonymous"></script>
-<script src="/build/js/front-bundle.js"></script>
-
-</body>
-</html>

@@ -10,4 +10,10 @@ class HomeController extends AbstractController
             'project' => R::findAll('project', $_SESSION['user']->id),
         ]);
     }
+
+    public function detailsProject (int $id){
+        $this->render("project/taskPage", [
+            'project' => R::findOne('project','id=?', [$id]),
+        ]);
+    }
 }
