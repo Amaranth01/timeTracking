@@ -13,7 +13,6 @@ class TaskController extends AbstractController
 
         $project = R::findOne('project', 'id=?',[$_SESSION['project']->id]);
         $task = R::dispense('task');
-        $task->taskTime = 0;
         $task->taskName = $this->clean($content);
         $_SESSION['task']= $task;
         $project->ownTaskList[] = $task;
@@ -23,12 +22,12 @@ class TaskController extends AbstractController
         exit();
     }
 
-    public function addTime() {
-        $json = file_get_contents('php://input');
-        $payload = json_decode($json, true);
-        $content = $payload['seconds'];
-        $time = R::load('task', $_SESSION['task']);
-        $time->taskTime = $content;
-        R::store($time);
+
+
+    public function deleteTask(int $id)
+    {
+        $task = R::findOne('task', 'id=?', [$id]);
+        R::trash($task);
+        $this->render('project/taskPage');
     }
 }

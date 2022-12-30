@@ -31,7 +31,7 @@ export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement
             else {
                 stop = true;
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/index.php?c=task&a=add-time');
+                xhr.open('POST', '/index.php?c=project&a=add-time');
                 xhr.responseType = 'json';
 
                 xhr.onload = function () {

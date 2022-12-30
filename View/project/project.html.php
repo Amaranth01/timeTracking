@@ -21,8 +21,12 @@ foreach ($data['project'] as $project) {
                 Création du projet <br> <br>
                 <i class="fa-regular fa-calendar-days"> <?= $project->project_date ?> </i>
             </p>
+            <p>
+                Temps passé sur le projet : <br> <br>
+                <i class="fa-regular fa-clock"> <?= $project->projectTime ?> </i>
+            </p>
         </div>
-            <div class="listTask">
+            <div class="task">
             <?php
                 foreach ($project->ownTaskList as $task) { ?>
                     <p>
@@ -35,9 +39,9 @@ foreach ($data['project'] as $project) {
 
         <div class="otherUtils">
             <span><i class="fa-solid fa-trash suppress"></i></span>
-            <span><a href="/index.php?c=home&a=details-project&id=<?= $project->id ?>"><i
-                            class="fa-solid fa-eye"></i></a></span>
-            <button class="buttonAddTask">+ Ajouter une tâche</button>
+            <span><a href="/index.php?c=home&a=details-project&id=<?= $project->id ?>">
+                    <i class="fa-solid fa-eye"></i></a></span>
+            <button class="addTask">+ Ajouter une tâche</button>
         </div>
     </div>
     <?php

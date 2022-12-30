@@ -27,7 +27,7 @@
     <div>
         <p>
             <span><i class="fa-solid fa-stopwatch"></i> Total d'heures passées : <?= $task->task_time ?> </span>
-            <button class="buttonAddTask"> + Ajouter une tâche</button>
+            <button class="addTask"> + Ajouter une tâche</button>
         </p>
     </div>
 </div>

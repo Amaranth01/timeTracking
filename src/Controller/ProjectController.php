@@ -19,6 +19,7 @@ class ProjectController extends AbstractController
 
         $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
         $project = R::dispense('project');
+        $project->projectTime = 0;
         $project->projectDate = R::isoDate();
         $_SESSION['project'] = $project;
         $user->ownProjectList[] = $project;
@@ -29,9 +30,19 @@ class ProjectController extends AbstractController
         exit();
     }
 
+    public function addTime() {
+        $json = file_get_contents('php://input');
+        $payload = json_decode($json, true);
+        $content = $payload['seconds'];
+        $time = R::load('project', $_SESSION['project']);
+        $time->projectTime = $content;
+        R::store($time);
+    }
+
     public function deleteProject(int $id = null) {
         $project = R::findOne('project', 'id=?', [$id]);
         $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
         R::trash($project);
+        $this->render('project/project');
     }
 }
