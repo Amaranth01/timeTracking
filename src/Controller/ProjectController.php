@@ -43,6 +43,9 @@ class ProjectController extends AbstractController
         $project = R::findOne('project', 'id=?', [$id]);
         $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
         R::trash($project);
-        $this->render('project/project');
+
+        $this->render("project/project", [
+            'project' => R::findAll('project', $_SESSION['user']->id),
+        ]);
     }
 }

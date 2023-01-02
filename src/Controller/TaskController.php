@@ -22,8 +22,6 @@ class TaskController extends AbstractController
         exit();
     }
 
-
-
     public function deleteTask(int $id)
     {
         $task = R::findOne('task', 'id=?', [$id]);

@@ -38,9 +38,13 @@ class UserController extends AbstractController
                 $_SESSION['errors'] = "Le mot de passe n'est pas correct";
                 self::loginPage();
             }
-            $this->render('project/project');
+            $this->render("project/project", [
+                'project' => R::findAll('project', $_SESSION['user']->id),
+            ]);
         }
-        $this->render("project/project");
+        $this->render("project/project", [
+            'project' => R::findAll('project', $_SESSION['user']->id),
+        ]);
     }
 
     /**
@@ -91,6 +95,6 @@ class UserController extends AbstractController
     public function logout()
     {
         session_destroy();
-        $this->render('home/login');
+        $this->render('forms/login');
     }
 }

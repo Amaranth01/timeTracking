@@ -13,7 +13,6 @@ export const AddTaskDb: any = function (this : any, taskName : string) {
             }
             let response = xhr.response;
             taskName = response.taskName;
-            console.log(taskName);
         }
         xhr.send(JSON.stringify({
             taskName: taskName

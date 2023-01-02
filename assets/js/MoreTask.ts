@@ -1,4 +1,5 @@
 import {AddTaskDb} from "./AddTaskDb";
+import {taskArray} from "./Project";
 
 export const MoreTask: any = function (this: any) {
     let task: NodeListOf<Element> = document.querySelectorAll('.task');
@@ -18,17 +19,18 @@ export const MoreTask: any = function (this: any) {
                 validateNewTask.innerText = "Valider la nouvelle tâche";
 
                 validateNewTask.addEventListener('click', function () {
+                    console.log('ggggg')
                     let taskName: string = inputNewTask.value;
 
                     inputNewTask.remove();
                     validateNewTask.remove();
                     newTask.innerHTML += taskName.toString();
+                    taskArray.push(taskName);
 
                     let addTaskDb = new AddTaskDb(taskName);
                     addTaskDb.addDb();
                 });
             });
-
         }
     }
 }
