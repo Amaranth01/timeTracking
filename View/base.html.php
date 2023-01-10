@@ -27,6 +27,7 @@ if (isset($_SESSION['success'])) {
         <?= $success ?>
     </div> <?php
 }
+var_dump($_SESSION['project']->id);
 ?>
 <div>
     <nav>
@@ -37,7 +38,6 @@ if (isset($_SESSION['success'])) {
         </ul>
     </nav>
 </div>
-
 
 <main class="container">
   <?= $html ?>

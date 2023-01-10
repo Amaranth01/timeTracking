@@ -1,4 +1,3 @@
-
 const development = {
     mode: 'development',
     devtool: 'source-map',

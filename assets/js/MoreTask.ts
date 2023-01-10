@@ -19,7 +19,6 @@ export const MoreTask: any = function (this: any) {
                 validateNewTask.innerText = "Valider la nouvelle tâche";
 
                 validateNewTask.addEventListener('click', function () {
-                    console.log('ggggg')
                     let taskName: string = inputNewTask.value;
 
                     inputNewTask.remove();

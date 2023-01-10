@@ -19,7 +19,6 @@ export const AddTask : any = function (this : any, listTask: HTMLDivElement, chr
             listTask.appendChild(chrono);
             taskArray.push(taskName);
 
-
             let addTaskDb = new AddTaskDb(taskName);
             addTaskDb.addDb();
         });

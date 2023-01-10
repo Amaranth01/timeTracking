@@ -7,7 +7,6 @@ export const ListProject: any = function (this:any) {
 
         for (let i = 0; i < addTask.length; i++) {
             addTask[i].addEventListener('click', function () {
-                console.log("coucou");
                 let moreTask = new MoreTask;
                 moreTask.addTask();
             });
