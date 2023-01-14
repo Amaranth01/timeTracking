@@ -1,9 +1,14 @@
 <?php
 
+use App\Controller\AbstractController;
 use RedBeanPHP\R;
 
-$user = $_SESSION['user']->id;
-$project = R::findOne('project', 'user_id=?', [$user]);
+if(!(new App\Controller\AbstractController)->userConnected()) {
+    $_SESSION['error'] = "Veuillez vous connecter pour accéder à vos projets";
+    (new App\Controller\AbstractController)->render('forms/login');
+}
+
+$project = R::findOne('project', 'user_id=?', [$_SESSION['user']]);
 
 if ($project) {
     ?>
@@ -43,7 +48,6 @@ if ($project) {
                                 class="fa-solid fa-trash suppress"></i></a></span>
                 <span><a href="/index.php?c=home&a=details-project&id=<?= $project->id ?>">
                     <i class="fa-solid fa-eye"></i></a></span>
-                <button class="addTask">+ Ajouter une tâche</button>
             </div>
         </div>
         <?php

@@ -1,4 +1,3 @@
-import {AddTask} from "./addTask";
 import {MoreTask} from "./MoreTask";
 
 export const ListProject: any = function (this:any) {

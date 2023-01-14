@@ -12,7 +12,7 @@
 
     <div id="contentDetails">
         <?php foreach ($project->ownTaskList as $task) { ?>
-            <p id="listTask">
+            <p class="ListTask">
                 <span>
                     <?= $task->taskName ?>
                 </span>
