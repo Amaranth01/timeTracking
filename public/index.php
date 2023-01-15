@@ -7,7 +7,7 @@ require '../Routing.php';
 require '../vendor/autoload.php';
 session_start();
 
-R::setup('mysql:host=localhost;dbname=time_tracking', 'root', '');
+R::setup('mysql:host=localhost;dbname=time-tracking', 'root', 'Pimousse.01');
 Debug::enable();
 Routing::route();
 

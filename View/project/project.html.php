@@ -1,14 +1,9 @@
 <?php
 
-use App\Controller\AbstractController;
 use RedBeanPHP\R;
 
-if (!AbstractController::userConnected()) {
-    $_SESSION['error'] = "Veuillez vous connecter pour avoir accès à vos projets";
-    $this->render('forms/login');
-}
-
-$project = R::findOne('project', 'user_id=?', [$_SESSION['user']->id]);
+$user = $_SESSION['user']->id;
+$project = R::findOne('project', 'user_id=?', [$user]);
 
 if ($project) {
     ?>
@@ -37,6 +32,7 @@ if ($project) {
                 foreach ($project->ownTaskList as $task) { ?>
                     <p>
                         <?= $task->taskName ?>
+                        <span><i class="fa-solid fa-stopwatch chrono"></i></span>
                     </p>
 
                 <?php } ?>
@@ -47,6 +43,7 @@ if ($project) {
                                 class="fa-solid fa-trash suppress"></i></a></span>
                 <span><a href="/index.php?c=home&a=details-project&id=<?= $project->id ?>">
                     <i class="fa-solid fa-eye"></i></a></span>
+                <button class="addTask">+ Ajouter une tâche</button>
             </div>
         </div>
         <?php
