@@ -3,14 +3,13 @@
         $project = $data['project'];
     }
 ?>
-
 <h2>Détail de votre projet</h2>
 <div class="contentTask">
     <div class="main">
         <h2> <?= $project->projectTitle ?> </h2>
     </div>
 
-    <div id="task">
+    <div class="task">
         <?php foreach ($project->ownTaskList as $task) { ?>
             <p class="ListTask">
                 <span>
@@ -26,7 +25,7 @@
     </div>
     <div>
         <p>
-            <span><i class="fa-solid fa-stopwatch"></i> Total d'heures passées : <?= $task->task_time ?> </span>
+            <span><span class="seeTime"></span><i class="fa-solid fa-stopwatch chrono"></i> Total d'heures passées : <?= $project->projectTime ?> </span>
             <button id="addTask">Ajouter une tâche</button>
         </p>
     </div>

@@ -16,7 +16,6 @@ export const AddTask: any = function (this: any, listTask: HTMLDivElement, chron
             inputNewTask.remove();
             validateNewTask.remove();
             listTask.innerHTML += taskName.toString();
-            listTask.appendChild(chrono);
             taskArray.push(taskName);
 
             let addTaskDb = new AddTaskDb(taskName);

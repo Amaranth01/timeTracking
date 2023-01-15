@@ -4,10 +4,7 @@ import {TitleProject} from "./TitleProject";
 
 export let addProject: HTMLInputElement = document.querySelector('#addProject') as HTMLInputElement;
 export let body: HTMLElement = document.querySelector('body') as HTMLElement;
-const arrayProject: string[] = [];
 export let taskArray: string[] = [];
-export let taskStorage: Storage = localStorage;
-
 export const CreateProject: any = function (this: any) {
     this.newProject = () => {
         if (addProject) {
@@ -68,12 +65,6 @@ export const CreateProject: any = function (this: any) {
                     let addTask = new AddTask(listTask, chrono);
                     addTask.newTask();
                 });
-
-                let startChrono = new StopWatch(seeTime, chrono);
-                startChrono.countUp;
-
-                arrayProject.push(CreateProject.newProject);
-                taskStorage.setItem("keepProject", JSON.stringify(arrayProject));
 
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/index.php?c=project&a=add-project');

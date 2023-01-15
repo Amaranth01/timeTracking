@@ -4,6 +4,7 @@ import {ContentProject} from "./ContentProject";
 import {InfoMessage} from "./InfoMessage";
 // import {MoreTask} from "./MoreTask";
 import {ListProject} from "./ListProject";
+import {StopWatch} from "./StopWatch";
 
 let createProject : any = new CreateProject();
 createProject.newProject();
@@ -17,3 +18,5 @@ infoMessage.errorMessage();
 let listProject :any = new ListProject();
 listProject.allProject();
 
+let startChrono = new StopWatch();
+startChrono.countUp;

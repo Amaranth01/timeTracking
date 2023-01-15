@@ -3,27 +3,30 @@ import {AddTaskDb} from "./AddTaskDb";
 
 export const ListProject: any = function (this: any) {
     this.allProject = () => {
-        let task: HTMLDivElement = document.querySelector('#task') as HTMLDivElement;
+        let task: HTMLDivElement = document.querySelector('.task') as HTMLDivElement;
         let addTask: HTMLButtonElement = document.querySelector('#addTask') as HTMLButtonElement;
-        addTask.addEventListener('click', function () {
-            let inputNewTask: HTMLInputElement = document.createElement('input');
-            let validateNewTask: HTMLButtonElement = document.createElement('button');
+        if(task) {
 
-            console.log("task");
-            task.appendChild(inputNewTask);
-            task.appendChild(validateNewTask);
-            validateNewTask.innerText = "Valider la nouvelle tâche";
 
-            validateNewTask.addEventListener('click', function () {
-                let taskName: string = inputNewTask.value;
-                inputNewTask.remove();
-                validateNewTask.remove();
-                task.innerHTML += taskName.toString();
-                taskArray.push(taskName);
+            addTask.addEventListener('click', function () {
+                let inputNewTask: HTMLInputElement = document.createElement('input');
+                let validateNewTask: HTMLButtonElement = document.createElement('button');
 
-                let addTaskDb = new AddTaskDb(taskName);
-                addTaskDb.addDb();
+                task.appendChild(inputNewTask);
+                task.appendChild(validateNewTask);
+                validateNewTask.innerText = "Valider la nouvelle tâche";
+
+                validateNewTask.addEventListener('click', function () {
+                    let taskName: string = inputNewTask.value;
+                    inputNewTask.remove();
+                    validateNewTask.remove();
+                    task.innerHTML += taskName.toString();
+                    taskArray.push(taskName);
+
+                    let addTaskDb = new AddTaskDb(taskName);
+                    addTaskDb.addDb();
+                });
             });
-        });
+        }
     }
 }

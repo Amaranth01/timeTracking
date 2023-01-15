@@ -1,5 +1,7 @@
 
-export const StopWatch: any = function (this: any, seeTime: HTMLParagraphElement, chrono : HTMLElement) {
+export const StopWatch: any = function (this: any) {
+    let chrono : HTMLElement = document.querySelector('.chrono') as HTMLElement;
+    let seeTime : HTMLSpanElement = document.querySelector('.seeTime') as HTMLSpanElement;
     let hours: number = 0;
     let minutes: number = 0;
     let seconds: number = 0;

@@ -27,6 +27,7 @@ if (isset($_SESSION['success'])) {
         <?= $success ?>
     </div> <?php
 }
+var_dump($_SESSION['user']->id);
 var_dump($_SESSION['project']->id);
 ?>
 <div>
