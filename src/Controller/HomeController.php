@@ -7,8 +7,11 @@ class HomeController extends AbstractController
 {
     public function index (){
         $this->render("project/project", [
-            'project' => R::findAll('project', $_SESSION['user']->id),
+            'project' => R::findAll('project'),
         ]);
+        if(!$_SESSION['user']->id) {
+            $this->render('forms/login');
+        }
     }
 
     public function detailsProject (int $id){

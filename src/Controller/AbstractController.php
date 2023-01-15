@@ -37,8 +37,8 @@ class AbstractController
         return $_POST[$field];
     }
 
-    public function userConnected(): \RedBeanPHP\OODBBean
+    public static function userConnected(): bool
     {
-        return R::findOne('user', 'id=?', [$_SESSION['user']->id]);
+        return isset($_SESSION['user']) && null !== $_SESSION['user']->id;
     }
 }

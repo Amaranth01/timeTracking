@@ -10,9 +10,9 @@
         <h2> <?= $project->projectTitle ?> </h2>
     </div>
 
-    <div id="contentDetails">
+    <div id="task">
         <?php foreach ($project->ownTaskList as $task) { ?>
-            <p id="listTask">
+            <p class="ListTask">
                 <span>
                     <?= $task->taskName ?>
                 </span>
@@ -27,7 +27,7 @@
     <div>
         <p>
             <span><i class="fa-solid fa-stopwatch"></i> Total d'heures passées : <?= $task->task_time ?> </span>
-            <button class="addTask"> + Ajouter une tâche</button>
+            <button id="addTask">Ajouter une tâche</button>
         </p>
     </div>
 </div>
