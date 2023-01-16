@@ -7,7 +7,6 @@ require '../Routing.php';
 require '../vendor/autoload.php';
 session_start();
 
-R::setup('mysql:host=localhost;dbname=time_tracking', 'root', '');
+R::setup('mysql:host=localhost;dbname=time_tracking', 'dev', 'dev');
 Debug::enable();
 Routing::route();
-

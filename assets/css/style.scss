@@ -4,6 +4,37 @@ body {
   position: relative;
 }
 
+//nav style
+
+nav {
+  background-color: #c0c0c0;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+li {
+  list-style: none;
+}
+
+#addProject {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #71ae98;
+}
+
 //all projects
 
 .container {
@@ -17,20 +48,14 @@ button {
 }
 
 h2 {
-  text-align: center;
   width: 100%;
-}
-
-.main {
   text-align: center;
-  margin-bottom: 1rem;
-  width: 100%;
 }
 
 .content {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
   width: 30rem;
   height: 24rem;

@@ -9,9 +9,6 @@ class HomeController extends AbstractController
         $this->render("project/project", [
             'project' => R::findAll('project'),
         ]);
-        if(!$_SESSION['user']->id) {
-            $this->render('forms/login');
-        }
     }
 
     public function detailsProject (int $id){

@@ -36,9 +36,4 @@ class AbstractController
         }
         return $_POST[$field];
     }
-
-    public static function userConnected(): bool
-    {
-        return isset($_SESSION['user']) && null !== $_SESSION['user']->id;
-    }
 }

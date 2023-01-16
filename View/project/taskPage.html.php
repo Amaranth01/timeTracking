@@ -1,9 +1,15 @@
 <?php
+    if (!isset($_SESSION['user'])) {
+        $_SESSION['error'] = "C'est pas bien de couper par les liens";
+        (new App\Controller\AbstractController)->render('forms/login');
+    }
+
     if (isset($data['project'])) {
         $project = $data['project'];
     }
 ?>
 <h2>Détail de votre projet</h2>
+<a href="/index.php?c=home&a=index">Retour à votre liste des projets</a>
 <div class="contentTask">
     <div class="main">
         <h2> <?= $project->projectTitle ?> </h2>
@@ -25,7 +31,10 @@
     </div>
     <div>
         <p>
-            <span><span class="seeTime"></span><i class="fa-solid fa-stopwatch chrono"></i> Total d'heures passées : <?= $project->projectTime ?> </span>
+            <span><span class="seeTime"></span>
+                <i class="fa-solid fa-stopwatch chrono"></i>
+                Total d'heures passées : <?= $project->projectTime ?>
+            </span>
             <button id="addTask">Ajouter une tâche</button>
         </p>
     </div>
