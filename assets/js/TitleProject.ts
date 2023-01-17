@@ -20,7 +20,7 @@ export const TitleProject : any = function (this : any, title : HTMLHeadingEleme
                     alert('Un paramètre est manquant');
                 }
                 let response = xhr.response;
-                projectTitle = response.projectTitle;
+                projectTitle = response.projectID;
             }
 
             xhr.send(JSON.stringify({

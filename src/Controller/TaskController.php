@@ -6,20 +6,20 @@ use RedBeanPHP\R;
 
 class TaskController extends AbstractController
 {
-    public function addTask() {
+    public function addTask(int $id = null)
+    {
 
-            $json = file_get_contents('php://input');
-            $payload = json_decode($json, true);
-            $content = $payload['taskName'];
+        $json = file_get_contents('php://input');
+        $payload = json_decode($json, true);
+        $content = $payload['taskName'];
 
-            $project = R::findOne('project', 'id=?',[$_SESSION['project']->id]);
+        $project = R::findOne('project', 'id=?', [$id]);
 
-            $task = R::dispense('task');
-            $task->taskName = $this->clean($content);
-            $_SESSION['task']= $task;
-            $project->ownTaskList[] = $task;
-            R::store($task);
-            R::store($project);
+        $task = R::dispense('task');
+        $task->taskName = $this->clean($content);
+        $project->ownTaskList[] = $task;
+        R::store($task);
+        R::store($project);
     }
 
     public function deleteTask(int $id)

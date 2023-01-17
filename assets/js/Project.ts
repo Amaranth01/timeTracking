@@ -67,7 +67,7 @@ export const CreateProject: any = function (this: any) {
                 });
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/index.php?c=project&a=add-project');
+                xhr.open('POST', '/index.php?c=project&a=add-title');
             });
         }
     }

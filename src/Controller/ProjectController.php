@@ -11,8 +11,8 @@ class ProjectController extends AbstractController
         $this->render("forms/login");
     }
 
-    public function addTitle() {
-
+    public function addTitle()
+    {
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
         $content = $payload['projectTitle'];
@@ -21,20 +21,21 @@ class ProjectController extends AbstractController
         $project = R::dispense('project');
         $project->projectTime = 0;
         $project->projectDate = R::isoDate();
-        $_SESSION['project'] = $project;
         $user->ownProjectList[] = $project;
         $project->projectTitle = $this->clean($content);
-        R::store($project);
+        $projectId = R::store($project);
         R::store($user);
 
-        exit();
+        echo json_encode([
+            'projectID' => $projectId
+        ]);
     }
 
-    public function addTime() {
+    public function addTime(int $id = null) {
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
         $content = $payload['seconds'];
-        $time = R::load('project', $_SESSION['project']);
+        $time = R::load('project', (int)[$id]);
         $time->projectTime = $content;
         R::store($time);
     }
