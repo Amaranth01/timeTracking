@@ -2,72 +2,40 @@ import {AddTask} from "./addTask";
 import {StopWatch} from "./StopWatch";
 import {TitleProject} from "./TitleProject";
 
-export let addProject: HTMLInputElement = document.querySelector('#addProject') as HTMLInputElement;
-export let body: HTMLElement = document.querySelector('body') as HTMLElement;
+let addProject: HTMLInputElement = document.querySelector('#addProject') as HTMLInputElement;
+let body: HTMLElement = document.querySelector('body') as HTMLElement;
 export let taskArray: string[] = [];
 export const CreateProject: any = function (this: any) {
     this.newProject = () => {
+        //Create a new project
         if (addProject) {
             addProject.addEventListener('click', function (e) {
                 e.preventDefault();
+
+                //Create all elements for the new project
                 let title: HTMLHeadingElement = document.createElement('h1');
-                let listTask: HTMLDivElement = document.createElement('div') as HTMLDivElement;
-                let otherUtils: HTMLDivElement = document.createElement('div');
                 let content: HTMLDivElement = document.createElement('div') as HTMLDivElement;
-                let utils: HTMLDivElement = document.createElement('div') as HTMLDivElement;
-                let time: HTMLElement = document.createElement('i');
-                let calendar: HTMLElement = document.createElement('i');
-                let supress: HTMLElement = document.createElement('i');
-                let seeProject: HTMLElement = document.createElement('i');
                 let link: HTMLAnchorElement = document.createElement('a');
                 let inputTitle: HTMLInputElement = document.createElement('input') as HTMLInputElement;
                 let validateProjectName: HTMLButtonElement = document.createElement('button');
-                let seeTime: HTMLParagraphElement = document.createElement('p');
-                let buttonAddTask: HTMLButtonElement = document.createElement('button');
-                let chrono : HTMLElement = document.createElement('i');
 
-                content.className = "content";
+                //Attribute class of the elements
+                content.className = "projectCreating";
                 title.className = "title";
                 inputTitle.className = 'inputTitle';
                 validateProjectName.className = "validateProject";
-                time.className = "fa-regular fa-clock";
-                calendar.className = "fa-solid fa-calendar-days";
-                listTask.className = "listTask";
-                otherUtils.className = "otherUtils";
-                supress.className = "fa-solid fa-trash";
-                seeProject.className = "fa-solid fa-eye";
-                buttonAddTask.innerText = " + Ajouter une tâche ";
-                seeTime.innerHTML = "00:00:00";
-                validateProjectName.innerText = "Valider le nom du projet";
-                chrono.className = "fa-solid fa-stopwatch";
+                validateProjectName.innerText = "Valider le projet";
 
+                //Insert the child elements in the parents elements
                 body.appendChild(content);
                 content.appendChild(inputTitle);
-                content.appendChild(validateProjectName);
+                content.appendChild(link)
+                link.appendChild(validateProjectName);
                 content.appendChild(title);
-                content.appendChild(utils);
-                content.appendChild(listTask);
-                content.appendChild(otherUtils);
-                utils.appendChild(calendar);
-                utils.appendChild(time);
-                utils.appendChild(seeTime);
-                otherUtils.appendChild(supress);
-                otherUtils.appendChild(link);
-                otherUtils.appendChild(buttonAddTask);
-                link.appendChild(seeProject);
 
-                link.href = "/index.php?c=home&a=content";
-
-                let titleProject = new TitleProject(title, inputTitle, validateProjectName);
+                //Object for creating the project
+                let titleProject = new TitleProject(title, inputTitle, validateProjectName, link);
                 titleProject.projectName();
-
-                buttonAddTask.addEventListener('click', function () {
-                    let addTask = new AddTask(listTask, chrono);
-                    addTask.newTask();
-                });
-
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/index.php?c=project&a=add-title');
             });
         }
     }

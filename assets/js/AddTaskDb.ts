@@ -1,7 +1,7 @@
 export const AddTaskDb: any = function (this : any, taskName : string) {
     this.addDb = () => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/index.php?c=task&a=addTask');
+        xhr.open('POST', '/index.php?c=task&a=add-task');
         xhr.setRequestHeader('content-type', 'application/json');
         xhr.responseType = "json";
 

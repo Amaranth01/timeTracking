@@ -46,7 +46,7 @@ class ProjectController extends AbstractController
         R::trash($project);
 
         $this->render("project/project", [
-            'project' => R::findAll('project', $_SESSION['user']->id),
+            'project' => R::findAll('project', 'ORDER BY id DESC'),
         ]);
     }
 }

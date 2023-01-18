@@ -39,11 +39,11 @@ class UserController extends AbstractController
                 self::loginPage();
             }
             $this->render("project/project", [
-                'project' => R::findAll('project', $_SESSION['user']->id),
+                'project' => R::findAll('project', 'ORDER BY id DESC'),
             ]);
         }
         $this->render("project/project", [
-            'project' => R::findAll('project', $_SESSION['user']->id),
+            'project' => R::findAll('project', 'ORDER BY id DESC'),
         ]);
     }
 

@@ -7,7 +7,7 @@ class HomeController extends AbstractController
 {
     public function index (){
         $this->render("project/project", [
-            'project' => R::findAll('project'),
+            'project' => R::findAll('project', 'ORDER BY id DESC'),
         ]);
     }
 
@@ -15,5 +15,9 @@ class HomeController extends AbstractController
         $this->render("project/taskPage", [
             'project' => R::findOne('project','id=?', [$id]),
         ]);
+    }
+
+    public function details() {
+        $this->render('project/taskPage');
     }
 }
