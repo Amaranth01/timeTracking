@@ -8,18 +8,21 @@ class TaskController extends AbstractController
 {
     public function addTask(int $id = null)
     {
+        if (empty($_POST['task'])) {
+            $_SESSION['error'] = "Vous avez validé la tâche sans remplir le champ";
+            $this->render('project/taskPage');
+        }
 
-        $json = file_get_contents('php://input');
-        $payload = json_decode($json, true);
-        $content = $payload['taskName'];
-
-        $project = R::findOne('project', 'id=?', [$id]);
-
+        $project = R::findOne('project', 'id=?', [$_GET['id']]);
         $task = R::dispense('task');
-        $task->taskName = $this->clean($content);
+        $task->taskName = $this->clean($this->clean($this->getFormField('task')));
+        $task->project_id = $project->id;
         $project->ownTaskList[] = $task;
         R::store($task);
         R::store($project);
+        $this->render("project/taskPage", [
+            'project' => R::findOne('project', 'id=?', [$id]),
+        ]);
     }
 
     public function deleteTask(int $id)

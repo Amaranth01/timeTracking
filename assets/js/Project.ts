@@ -1,5 +1,3 @@
-import {AddTask} from "./addTask";
-import {StopWatch} from "./StopWatch";
 import {TitleProject} from "./TitleProject";
 
 let addProject: HTMLInputElement = document.querySelector('#addProject') as HTMLInputElement;
@@ -29,7 +27,7 @@ export const CreateProject: any = function (this: any) {
                 //Insert the child elements in the parents elements
                 body.appendChild(content);
                 content.appendChild(inputTitle);
-                content.appendChild(link)
+                content.appendChild(link);
                 link.appendChild(validateProjectName);
                 content.appendChild(title);
 

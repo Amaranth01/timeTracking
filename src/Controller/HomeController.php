@@ -16,8 +16,4 @@ class HomeController extends AbstractController
             'project' => R::findOne('project','id=?', [$id]),
         ]);
     }
-
-    public function details() {
-        $this->render('project/taskPage');
-    }
 }

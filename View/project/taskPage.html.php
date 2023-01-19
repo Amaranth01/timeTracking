@@ -1,12 +1,14 @@
 <?php
+use RedBeanPHP\R;
+
     if (!isset($_SESSION['user'])) {
         $_SESSION['error'] = "C'est pas bien de couper par les liens";
         (new App\Controller\AbstractController)->render('forms/login');
     }
 
-    if (isset($data['project'])) {
-        $project = $data['project'];
-    }
+    $project = R::findOne('project', "id =?", [$_GET['id']]);
+    $task = R::findAll('task', 'project_id=?', [$project->id]);
+
 ?>
 <h2>Détail de votre projet</h2>
 <a href="/index.php?c=home&a=index">Retour à votre liste des projets</a>
@@ -16,10 +18,11 @@
     </div>
 
     <div class="task">
-        <?php foreach ($project->ownTaskList as $task) { ?>
+        <?php
+        foreach ($task as $tasks) { ?>
             <p class="ListTask">
                 <span>
-                    <?= $task->taskName ?>
+                    <?= $tasks->taskName ?>
                 </span>
 
                 <span id="manageTask">
@@ -35,7 +38,12 @@
                 <i class="fa-solid fa-stopwatch chrono"></i>
                 Total d'heures passées : <?= $project->projectTime ?>
             </span>
-            <button id="addTask">Ajouter une tâche</button>
+        <form action="/index.php?c=task&a=add-task&id=<?=$project->id?>" method="post">
+            <label for="task"></label>
+            <input type="text" id="task" name="task">
+
+            <input type="submit" id="button" name = "submit" value="Ajoutez une tâche">
+        </form>
         </p>
     </div>
 </div>
