@@ -1,13 +1,14 @@
 <?php
+
 use RedBeanPHP\R;
 
-    if (!isset($_SESSION['user'])) {
-        $_SESSION['error'] = "C'est pas bien de couper par les liens";
-        (new App\Controller\AbstractController)->render('forms/login');
-    }
+if (!isset($_SESSION['user'])) {
+    $_SESSION['error'] = "C'est pas bien de couper par les liens";
+    (new App\Controller\AbstractController)->render('forms/login');
+}
 
-    $project = R::findOne('project', "id =?", [$_GET['id']]);
-    $task = R::findAll('task', 'project_id=?', [$project->id]);
+$project = R::findOne('project', "id =?", [$_GET['id']]);
+$task = R::findAll('task', 'project_id=?', [$project->id]);
 
 ?>
 <h2>Détail de votre projet</h2>
@@ -34,16 +35,15 @@ use RedBeanPHP\R;
     </div>
     <div>
         <p>
-            <span><span class="seeTime"></span>
-                <i class="fa-solid fa-stopwatch chrono"></i>
-                Total d'heures passées : <?= $project->projectTime ?>
-            </span>
-        <form action="/index.php?c=task&a=add-task&id=<?=$project->id?>" method="post">
+            <span class="seeTime"></span>
+            <i class="fa-solid fa-stopwatch chrono"></i>
+            Total d'heures passées : <?= $project->projectTime ?>
+        </p>
+        <form action="/index.php?c=task&a=add-task&id=<?= $project->id ?>" method="post">
             <label for="task"></label>
             <input type="text" id="task" name="task">
 
-            <input type="submit" id="button" name = "submit" value="Ajoutez une tâche">
+            <input type="submit" id="button" name="submit" value="Ajoutez une tâche">
         </form>
-        </p>
     </div>
 </div>

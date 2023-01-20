@@ -27,7 +27,7 @@ export const TitleProject : any = function (this : any, title : HTMLHeadingEleme
 
             xhr.send(JSON.stringify({
                 projectTitle: projectTitle
-                //Possibilité de marque juste "projectTitle dans ce cas.
+                //Possibilité de marquer juste "projectTitle dans ce cas.
                 //Là, il est instancié comme un objet
             }));
         });

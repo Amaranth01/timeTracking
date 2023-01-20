@@ -31,13 +31,18 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    public function addTime(int $id = null) {
+    public function addTime() {
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
-        $content = $payload['seconds'];
-        $time = R::load('project', (int)[$id]);
+        $content = $payload['second'];
+
+        $time = R::load('project', $_GET['id']);
         $time->projectTime = $content;
-        R::store($time);
+        $secondTime = R::store($time);
+
+        echo json_encode([
+            'second' => $secondTime
+        ]);
     }
 
     public function deleteProject(int $id = null) {
