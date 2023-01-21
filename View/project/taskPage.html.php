@@ -37,7 +37,7 @@ $task = R::findAll('task', 'project_id=?', [$project->id]);
         <p>
             <span class="seeTime"></span>
             <i class="fa-solid fa-stopwatch chrono"></i>
-            Total d'heures passées : <?= $project->projectTime ?>
+            Total d'heures passées : <span id="totalTime"><?= $project->projectTime ?></span>
         </p>
         <form action="/index.php?c=task&a=add-task&id=<?= $project->id ?>" method="post">
             <label for="task"></label>

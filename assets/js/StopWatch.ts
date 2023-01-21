@@ -1,6 +1,8 @@
 export const StopWatch: any = function (this: any) {
     let chrono: HTMLElement = document.querySelector('.chrono') as HTMLElement;
     let seeTime: HTMLSpanElement = document.querySelector('.seeTime') as HTMLSpanElement;
+    let time: HTMLSpanElement = document.querySelector('#totalTime') as HTMLSpanElement;
+    let totalTime: number;
     let hours: number = 0;
     let minutes: number = 0;
     let seconds: number = 0;
@@ -41,6 +43,11 @@ export const StopWatch: any = function (this: any) {
                 xhr.open('POST', '/index.php?c=project&a=add-time&id=' + id);
                 xhr.responseType = 'json';
 
+                let value = parseInt(time.innerText);
+                console.log(value);
+                totalTime = value + seconds;
+                console.log(totalTime);
+
                 xhr.onload = function () {
                     if (xhr.status === 404) {
                         alert("une erreur s'est produite");
@@ -48,11 +55,11 @@ export const StopWatch: any = function (this: any) {
                         alert('Un paramètre est manquant');
                     }
                     let response = xhr.response;
-                    seconds = response.second;
-                    console.log(seconds = response.second)
+                    totalTime = response.second;
+                    console.log(totalTime = response.second)
                 }
                 xhr.send(JSON.stringify({
-                    second: seconds,
+                    second: totalTime,
                 }));
             }
         });
