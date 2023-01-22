@@ -10,13 +10,15 @@ class ProjectController extends AbstractController
     {
         $this->render("forms/login");
     }
-
+//add Porject to the DB (I know it's not a logical name)
     public function addTitle()
     {
+        //get the json
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
         $content = $payload['projectTitle'];
 
+        //Prepare and send the data
         $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
         $project = R::dispense('project');
         $project->projectTime = 0;
@@ -30,12 +32,13 @@ class ProjectController extends AbstractController
             'projectID' => $projectId
         ]);
     }
-
+//Add time to the DB
     public function addTime() {
+        //get the json
         $json = file_get_contents('php://input');
         $payload = json_decode($json, true);
         $content = $payload['second'];
-
+        //Search project table by id for update the time
         $time = R::load('project', $_GET['id']);
         $time->projectTime = $content;
         $secondTime = R::store($time);

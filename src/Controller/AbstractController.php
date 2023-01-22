@@ -14,7 +14,7 @@ class AbstractController
         require __DIR__ . '/../../View/base.html.php';
         exit;
     }
-
+//Secures form data
     public function clean(string $data): string
     {
         $data = trim($data);
@@ -23,7 +23,7 @@ class AbstractController
 
         return $data;
     }
-
+//Checks that the form is submitted
     public function formSubmitted(): bool
     {
         return isset($_POST['submit']);

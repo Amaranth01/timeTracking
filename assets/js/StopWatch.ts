@@ -40,13 +40,13 @@ export const StopWatch: any = function (this: any) {
                 chrono.style.color = "darkred";
                 //Add time spent in database
                 const xhr = new XMLHttpRequest();
+                //send to the function add task
                 xhr.open('POST', '/index.php?c=project&a=add-time&id=' + id);
                 xhr.responseType = 'json';
 
+                //Recovery of inner containing numbers to convert and add them
                 let value = parseInt(time.innerText);
-                console.log(value);
                 totalTime = value + seconds;
-                console.log(totalTime);
 
                 xhr.onload = function () {
                     if (xhr.status === 404) {
@@ -56,7 +56,6 @@ export const StopWatch: any = function (this: any) {
                     }
                     let response = xhr.response;
                     totalTime = response.second;
-                    console.log(totalTime = response.second)
                 }
                 xhr.send(JSON.stringify({
                     second: totalTime,
