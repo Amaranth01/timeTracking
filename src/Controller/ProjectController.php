@@ -51,10 +51,16 @@ class ProjectController extends AbstractController
     public function deleteProject(int $id = null) {
         $project = R::findOne('project', 'id=?', [$id]);
         $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
-        R::trash($project);
 
-        $this->render("project/project", [
-            'project' => R::findAll('project', 'ORDER BY id DESC'),
-        ]);
+        //Verify the id of user for delete the project
+        if ($project->user_id === $user->id) {
+            R::trash($project);
+            $this->render("project/project", [
+                'project' => R::findAll('project', 'ORDER BY id DESC'),
+            ]);
+        } else {
+            $_SESSION['error'] = "C'est pas gentil de supprimer les projets des autres !";
+            $this->render("forms/login");
+        }
     }
 }

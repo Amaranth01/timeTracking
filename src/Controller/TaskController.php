@@ -27,8 +27,15 @@ class TaskController extends AbstractController
 
     public function deleteTask(int $id)
     {
+        $user = R::findOne('user', 'id=?', [$_SESSION['user']->id]);
         $task = R::findOne('task', 'id=?', [$id]);
-        R::trash($task);
-        $this->render('project/taskPage');
+        if($task->user_id === $user->id) {
+            R::trash($task);
+            $this->render('project/taskPage');
+        }
+        else {
+            $_SESSION['error'] = "C'est pas gentil de supprimer les projets des autres !";
+            $this->render("forms/login");
+        }
     }
 }
